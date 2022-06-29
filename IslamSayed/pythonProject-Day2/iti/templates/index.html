@@ -1,0 +1,8 @@
+{%extends 'pass.html'%}
+
+   {%block content%}
+<h1>Welcome,{{request.session.username}}</h1>
+                   {%endblock%}
+   {%block logout%}
+<li><a href="{%url 'logout'%}">logout</a></li>
+                   {%endblock%}

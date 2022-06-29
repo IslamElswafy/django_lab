@@ -1,0 +1,33 @@
+{%extends 'pass.html'%}
+{%load static%}
+
+
+   {%block conten%}
+              <!-- Start log in form -->
+    <div class="discount" id="discount">
+      <div class="image">
+        <div class="content">
+          <h2>log in to have all our news</h2>
+
+          <img src="{%static 'imgs/log in.png'%}" alt="" />
+        </div>
+      </div>
+      <div class="form">
+        <div class="content">
+          <h2>Log In to Equestrian Newspaper</h2>
+          <form  method="post">
+              {% csrf_token %}
+            <input class="input" type="text" placeholder="Your Name" name="username" />
+            <input class="input" type="password" placeholder="Your password" name="password" />
+            <input type="submit" value="Log In" />
+          </form>
+            <div style="color:red">
+                <h2>
+                    {{error}}
+                </h2>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- End log in form  -->
+                  {%endblock%}
