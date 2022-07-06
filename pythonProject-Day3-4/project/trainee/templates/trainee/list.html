@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+{{request.session.username}}
+<style>
+    .customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.customers tr:nth-child(even){background-color: #f2f2f2;}
+
+.customers tr:hover {background-color: #ddd;}
+
+.customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+ <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+<table class="customers"style="border:solid">
+    <tr>
+        <th>name</th>
+        <th>national_num</th>
+        <th>name</th>
+        <th>grade </th>
+        <th>sex </th>
+        <th>link</th>
+    </tr>
+    {% for  course in the_course  %}
+    <tr>
+        <td>{{course.name}}</td>
+        <td>{{course.slug.national_num}}</td>
+        <td>{{course.slug}}</td>
+        <td>
+        {{course.grade}}
+        </td>
+        <td>{{course.slug.sex}}</td>
+        <td>
+            <a href="{% url 'trainee:insert' %}"> insert</a>
+            <a href="{% url 'trainee:update' course.slug.id %}">update</a>
+            <a href="{% url  'trainee:updateform' course.slug.id}">updateform</a>
+            <a href="{% url 'trainee:delete' course.slug.id %}">delete</a>
+            <a href="{% url 'trainee:classdelete' course.slug.id%}">classdelete</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
